@@ -35,7 +35,7 @@ export default function Pembiayaan({navigation}) {
                     }}>
                         <Text style={{
                         textAlign: 'left',
-                        marginTop: 35,
+                        marginTop: 40,
                         marginLeft: 20,
                         fontWeight: 'bold',
                         fontSize: 20

@@ -2,6 +2,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native"
 import React from "react"
 import react from "react";
 import func from "../system/func";
+import { ImageBackground } from "react-native";
 
 export default function Anggota({navigation}) {
     const [anggota, setAnggota] = React.useState(null);
@@ -52,45 +53,35 @@ export default function Anggota({navigation}) {
 
         {/* Border Card Detail Anggota */}
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
-          <View style={{
-              width: 350,
-              height: 200,
-              backgroundColor: '#80B3FF',
-              marginHorizontal: 15,
-              marginVertical: 15,
-              borderRadius: 15
-          }}>
-
-            {/* Gambar Anggota */}
+          <ImageBackground source={require('../img/bg-agt.png')} style={{width: 350, height: 200, marginTop: 15, marginBottom: 10, borderRadius: 10, overflow: 'hidden'}}>
             <View style={{flexDirection: 'row'}}>
-              <Image source={anggota == null ? require('../img/logo.png') : {uri: env.base_url+"/foto_profil/" + anggota.foto_profil_anggota}} 
-                style={{
-                  marginTop: 25,
-                  marginLeft: 10,
-                  marginVertical: 10,
-                  width: 150,
-                  height: 150,
-                  borderRadius: 20
-                }}
-            />
+                <Image source={anggota == null ? require('../img/logo.png') : {uri: env.base_url+"/foto_profil/" + anggota.foto_profil_anggota}} 
+                  style={{
+                    marginTop: 1,
+                    marginLeft: 5,
+                    width: 150,
+                    height: 200,
+                    borderRadius: 15
+                  }}
+                />
 
-              {/* Nama Anggota */}
-              <View 
-                style={{
-                    flex: 1,
-                    marginLeft: 10,
-                    justifyContent: 'center'
-                }}>
-                <Text style={{fontWeight: 'bold', fontSize: 15}}>{anggota == null ? '-' : anggota.nama_anggota}</Text>
-                <Text>{anggota == null ? '-' : anggota.kode_anggota}</Text>
-                  <TouchableOpacity>
-                    <Text>Status : 
-                      <Text style={{color: '#A6FF96'}}> {anggota == null ? '-' : anggota.status_aktif_anggota}</Text>
-                    </Text>
-                  </TouchableOpacity>
+                {/* Nama Anggota */}
+                <View 
+                  style={{
+                      flex: 1,
+                      marginLeft: 10,
+                      justifyContent: 'center'
+                  }}>
+                  <Text style={{fontWeight: 'bold', fontSize: 15}}>{anggota == null ? '-' : anggota.nama_anggota}</Text>
+                  <Text>{anggota == null ? '-' : anggota.kode_anggota}</Text>
+                    <TouchableOpacity>
+                      <Text>Status : 
+                        <Text style={{color: '#A6FF96'}}> {anggota == null ? '-' : anggota.status_aktif_anggota}</Text>
+                      </Text>
+                    </TouchableOpacity>
+                </View>
               </View>
-            </View>
-          </View>
+          </ImageBackground>
         </View>
 
         {/* List Data */}
@@ -108,19 +99,19 @@ export default function Anggota({navigation}) {
             >Informasi Anggota
             </Text>
             <View style={{flexDirection: 'row',marginLeft: 15, marginHorizontal: 20}}>
-              <Text style={{marginRight: 66}}>Nama</Text>
+              <Text style={{marginRight: 91}}>Nama</Text>
               <Text>: {anggota == null ? '-' : anggota.nama_anggota}</Text>
             </View>
             <View style={{flexDirection: 'row',marginLeft: 15, marginHorizontal: 20}}>
-              <Text style={{marginRight: 77}}>NIK </Text>
+              <Text style={{marginRight: 102}}>NIK </Text>
               <Text>: {anggota == null ? '-' : anggota.nik_anggota}</Text>
             </View>
             <View style={{flexDirection: 'row',marginLeft: 15, marginHorizontal: 20}}>
-              <Text style={{marginRight: 15}}>Jenis Kelamin</Text>
+              <Text style={{marginRight: 40}}>Jenis Kelamin</Text>
               <Text>: {anggota == null ? '-' : anggota.jenis_kelamin_anggota}</Text>
             </View>
             <View style={{flexDirection: 'row',marginLeft: 15, marginHorizontal: 20}}>
-              <Text style={{marginRight: 59}}>Agama</Text>
+              <Text style={{marginRight: 84}}>Agama</Text>
               <Text>: {anggota == null ? '-' : anggota.agama_anggota}</Text>
             </View>
             <View style={{flexDirection: 'row',marginLeft: 15, marginHorizontal: 20}}>

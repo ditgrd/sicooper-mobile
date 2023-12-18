@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import Pembiayaan from "./Pembiayaan";
 import Transaksi from "./Transaksi";
 import react from "react";
+import { ImageBackground } from "react-native";
 
 export default function Simpanan() {
     const navigation = useNavigation();
@@ -28,6 +29,8 @@ export default function Simpanan() {
         await getSimpanan(usr.user_anggota);
       }, [])
 
+      console.log(simpanan)
+
     const Pembiayaan = () => {
       navigation.navigate('Pembiayaan');
     };
@@ -42,23 +45,18 @@ export default function Simpanan() {
                 <View style={{
                         width: 195,
                         height: 80,
+                        flex: 1,
                         backgroundColor: '#DAFFFB'
                     }}>
                         <Text style={{
                         textAlign: 'left',
-                        marginTop: 35,
+                        marginTop: 40,
                         marginLeft: 20,
                         fontWeight: 'bold',
                         fontSize: 20
                         }}>
-                        Simpanan
+                        Simpanan <Text>{simpanan == null ? '-' : simpanan.kode_anggota}</Text>
                     </Text>
-                </View>
-                <View style={{
-                    width: 195,
-                    height: 80,
-                    backgroundColor: '#DAFFFB'
-                }}>
                 </View>
             </View>
             
@@ -72,11 +70,9 @@ export default function Simpanan() {
             }}>
                 <View>
                     <View style={{marginLeft: 15, justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
-                        <View style={{width: 200, height: 100, backgroundColor: '#f4f4f4'}}>
-                            <Text style={{textAlign: 'right', marginBottom: 9}}>BANK</Text>
-                            <Image source={require('../img/cip-atm.jpg')} style={{width: 20, height: 20, marginLeft: 10}}/>
-                            <Text style={{fontWeight: 'bold', marginTop: '8'}}>Foto</Text>
-                        </View>
+                        <ImageBackground source={require('../img/SICooperAtm.png')} style={{width: 200, height: 123, borderRadius: 10, overflow: 'hidden'}}>
+                            <Text style={{fontWeight: 'bold', marginLeft: 22, fontSize: 14, color: 'white', marginTop: 70}}>{simpanan == null ? '-' : simpanan.kode_rek_simpanan}</Text>
+                        </ImageBackground>                        
                         <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                             <Text style={{fontSize: 18, fontWeight: 'bold', marginRight: 5, marginTop: 10}}>Tabungan</Text>
                             <Text>{simpanan == null ? '-' : simpanan.jenis_simpanan}</Text>
