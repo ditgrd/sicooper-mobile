@@ -7,6 +7,7 @@ import Drawer from './components/MyDrawer';
 import Simpanan from './components/Simpanan';
 import Pembiayaan from './components/Pembiayaan';
 import Transaksi from './components/Transaksi';
+import ListTransaksi from './components/ListTransaksi';
 
 const Stack = createStackNavigator();
 
@@ -20,13 +21,16 @@ export default function App() {
                         headerShown: false
                     }} />
                     <Stack.Screen name="Simpanan" component={Simpanan} options={{
-                        headerShown: false
+                        
                     }} />
                     <Stack.Screen name="Pembiayaan" component={Pembiayaan} options={{
-                        headerShown: false
+                        
                     }} />
                     <Stack.Screen name="Transaksi" component={Transaksi} options={{
                         headerShown: false
+                    }} />
+                    <Stack.Screen name="ListTransaksi" component={ListTransaksi} options={{
+                        title: 'Daftar Transaksi'
                     }} />
                     <Stack.Screen name="Login" component={Login} options={{
                     headerShown: false

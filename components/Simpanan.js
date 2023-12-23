@@ -4,7 +4,7 @@ import { View, Text, Image } from "react-native";
 import { Octicons, Entypo, MaterialIcons, AntDesign } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
 import Pembiayaan from "./Pembiayaan";
-import Transaksi from "./Transaksi";
+import ListTransaksi from "./ListTransaksi";
 import react from "react";
 import { ImageBackground } from "react-native";
 
@@ -34,8 +34,8 @@ export default function Simpanan() {
     const Pembiayaan = () => {
       navigation.navigate('Pembiayaan');
     };
-    const Transaksi = () => {
-      navigation.navigate('Transaksi');
+    const ListTransaksi = () => {
+      navigation.navigate('ListTransaksi');
     };
 
     return(
@@ -115,7 +115,7 @@ export default function Simpanan() {
                                 </View>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={Transaksi}>
+                        <TouchableOpacity onPress={ListTransaksi}>
                             <View style={{flexDirection: 'column', alignItems: 'center', marginRight: 30}}>
                                 <Octicons name="repo-pull" size={35} color="black" />
                                 <View style={{justifyContent: 'center', alignItems: 'center'}}>

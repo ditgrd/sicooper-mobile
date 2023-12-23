@@ -4,7 +4,7 @@ import { Ionicons, FontAwesome, Octicons, MaterialCommunityIcons, Entypo, Materi
 import { useNavigation } from '@react-navigation/native';
 import Simpanan from './Simpanan';
 import Pembiayaan from './Pembiayaan';
-import Transaksi from './Transaksi';
+import ListTransaksi from './ListTransaksi';
 import react from "react";
 
 export default function Home () {
@@ -35,8 +35,8 @@ export default function Home () {
   const Pembiayaan = () => {
     navigation.navigate('Pembiayaan');
   };
-  const Transaksi = () => {
-    navigation.navigate('Transaksi');
+  const ListTransaksi = () => {
+    navigation.navigate('ListTransaksi');
   };
 
     return (
@@ -111,7 +111,7 @@ export default function Home () {
                     </View>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={Transaksi}>
+                <TouchableOpacity onPress={ListTransaksi}>
                   <View style={{flexDirection: 'column', alignItems: 'center'}}>
                     <Octicons name="repo-pull" size={35} color="black" />
                     <View style={{justifyContent: 'center', alignItems: 'center'}}>
