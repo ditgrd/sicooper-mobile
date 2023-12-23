@@ -7,13 +7,14 @@ import Pembiayaan from "./Pembiayaan";
 import ListTransaksi from "./ListTransaksi";
 import react from "react";
 import { ImageBackground } from "react-native";
+import moment from "moment";
+import MoneyFormat from "../system/MoneyFormat";
 
-export default function Simpanan() {
-    const navigation = useNavigation();
+export default function Simpanan({navigation, route}) {
     const [simpanan, setSimpanan] = React.useState(null);
 
-    async function getSimpanan(kode_anggota) {
-        var req = await fetch(env.base_url+'/api/mobile/simpanan/'+ kode_anggota, {
+    async function getSimpanan(kode_rek_simpanan) {
+        var req = await fetch(env.base_url+'/api/mobile/simpanan/'+ kode_rek_simpanan, {
           method: 'GET'
         });
   
@@ -25,8 +26,7 @@ export default function Simpanan() {
       }
   
       react.useMemo(async() => {
-        var usr= await JSON.parse(await func.SesGet ('login'))
-        await getSimpanan(usr.user_anggota);
+        await getSimpanan(route.params.kode_rek_simpanan);
       }, [])
 
       console.log(simpanan)
@@ -40,26 +40,6 @@ export default function Simpanan() {
 
     return(
         <View>
-             {/* header */}
-            <View style={{flexDirection: 'row'}}>
-                <View style={{
-                        width: 195,
-                        height: 80,
-                        flex: 1,
-                        backgroundColor: '#DAFFFB'
-                    }}>
-                        <Text style={{
-                        textAlign: 'left',
-                        marginTop: 40,
-                        marginLeft: 20,
-                        fontWeight: 'bold',
-                        fontSize: 20
-                        }}>
-                        Simpanan <Text>{simpanan == null ? '-' : simpanan.kode_anggota}</Text>
-                    </Text>
-                </View>
-            </View>
-            
             {/* Simpanan Card */}
             <View 
             style={{
@@ -70,20 +50,20 @@ export default function Simpanan() {
             }}>
                 <View>
                     <View style={{marginLeft: 15, justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
-                        <ImageBackground source={require('../img/SICooperAtm.png')} style={{width: 200, height: 123, borderRadius: 10, overflow: 'hidden'}}>
-                            <Text style={{fontWeight: 'bold', marginLeft: 22, fontSize: 14, color: 'white', marginTop: 70}}>{simpanan == null ? '-' : simpanan.kode_rek_simpanan}</Text>
+                        <ImageBackground source={require('../img/SICooperAtm.png')} style={{width: 200, height: 123, borderRadius: 10, overflow: 'hidden', marginTop: 15}}>
+                            <Text style={{fontWeight: 'bold', marginLeft: 22, fontSize: 14, color: 'white', marginTop: 70}}>{simpanan == null ? '-' : simpanan.simpanan.kode_rek_simpanan}</Text>
                         </ImageBackground>                        
                         <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                             <Text style={{fontSize: 18, fontWeight: 'bold', marginRight: 5, marginTop: 10}}>Tabungan</Text>
-                            <Text>{simpanan == null ? '-' : simpanan.jenis_simpanan}</Text>
+                            <Text>{simpanan == null ? '-' : simpanan.simpanan.jenis_simpanan}</Text>
                         </View>
                         <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                             <Text style={{fontSize: 18, fontWeight: 'bold', marginRight: 5, marginTop: 25}}>Saldo</Text>
-                            <Text style={{fontSize: 20, fontWeight: 'bold'}}>Rp. 1.000.000</Text>
+                            <Text style={{fontSize: 20, fontWeight: 'bold'}}>{simpanan == null ? '-' : MoneyFormat(simpanan.saldo)}</Text>
                         </View>
                         <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                             <Text style={{fontSize: 15, fontWeight: 'bold', marginRight: 5, marginTop: 25}}>Tanggal Mulai</Text>
-                            <Text style={{fontSize: 14}}>{simpanan == null ? '-' : simpanan.tgl_mulai_simpanan}</Text>
+                            <Text style={{fontSize: 14}}>{simpanan == null ? '-' : moment(simpanan.tgl_mulai_simpanan).format('LL')}</Text>
                         </View>
                     </View>
                 </View>

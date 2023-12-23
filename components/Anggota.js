@@ -3,6 +3,7 @@ import React from "react"
 import react from "react";
 import func from "../system/func";
 import { ImageBackground } from "react-native";
+import moment from "moment";
 
 export default function Anggota({navigation}) {
     const [anggota, setAnggota] = React.useState(null);
@@ -116,7 +117,7 @@ export default function Anggota({navigation}) {
             </View>
             <View style={{flexDirection: 'row',marginLeft: 15, marginHorizontal: 20}}>
               <Text style={{marginRight: 10}}>Tanggal Input User</Text>
-              <Text>: {anggota == null ? '-' : anggota.tgl_input_anggota}</Text>
+              <Text>: {anggota == null ? '-' : moment(anggota.tgl_input_anggota).format('LL')}</Text>
             </View>
           </View>
 
@@ -252,7 +253,7 @@ export default function Anggota({navigation}) {
             </View>
             <View style={{flexDirection: 'row', marginLeft: 15}}>
               <Text style={{marginRight: 15}}>Tanggal Registrasi</Text>
-              <Text>: {anggota == null ? '-' : anggota.tgl_regist_anggota}</Text>
+              <Text>: {anggota == null ? '-' : moment(anggota.tgl_regist_anggota).format('LL')}</Text>
             </View>
           </View>
         </View>

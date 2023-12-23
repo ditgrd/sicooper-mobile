@@ -24,33 +24,10 @@ export default function Pembiayaan({navigation}) {
         await getPembiayaan(usr.user_anggota);
       }, [])
 
+      console.log(pembiayaan)
+
     return(
         <View>
-            {/* Header */}
-            <View style={{flexDirection: 'row'}}>
-                <View style={{
-                        width: 195,
-                        height: 80,
-                        backgroundColor: '#DAFFFB'
-                    }}>
-                        <Text style={{
-                        textAlign: 'left',
-                        marginTop: 40,
-                        marginLeft: 20,
-                        fontWeight: 'bold',
-                        fontSize: 20
-                        }}>
-                        Pembiayaan
-                    </Text>
-                </View>
-                <View style={{
-                    width: 195,
-                    height: 80,
-                    backgroundColor: '#DAFFFB'
-                }}>
-                </View>                
-            </View>
-
             {/* Detail */}
             <ScrollView>
                 <View style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -99,7 +76,7 @@ export default function Pembiayaan({navigation}) {
                             </View>
                             <View style={{flexDirection: 'row', marginTop: 7}}>
                                 <Text style={{fontWeight: 'bold', fontSize: 15, marginRight: 86}}>Suku Margin</Text>
-                                <Text>: {pembiayaan == null ? '-' : pembiayaan.metode_penghitung_angsuran}</Text>
+                                <Text>: {pembiayaan == null ? '-' : pembiayaan.metode_penghitungan_angsuran}</Text>
                             </View>
                             <View style={{flexDirection: 'row', marginTop: 7}}>
                                 <Text style={{fontWeight: 'bold', fontSize: 15, marginRight: 67}}>Pokok Jaminan</Text>

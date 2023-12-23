@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { View, Text, Image, TouchableOpacity, Modal, ScrollView} from "react-native"
 import { Ionicons, FontAwesome, Octicons, MaterialCommunityIcons, Entypo, MaterialIcons, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import Simpanan from './Simpanan';
+import ListSimpanan from './ListSimpanan';
 import Pembiayaan from './Pembiayaan';
 import ListTransaksi from './ListTransaksi';
 import react from "react";
@@ -29,8 +29,8 @@ export default function Home () {
       await getAnggota(usr.user_anggota);
     }, [])
 
-  const Simpanan = () => {
-    navigation.navigate('Simpanan');
+  const ListSimpanan = () => {
+    navigation.navigate('ListSimpanan');
   };
   const Pembiayaan = () => {
     navigation.navigate('Pembiayaan');
@@ -95,7 +95,7 @@ export default function Home () {
               elevation: 5
             }}>
               <View style={{flexDirection: 'row', justifyContent: 'space-between', marginLeft: 25, marginRight: 25, marginTop: 20}}>
-                <TouchableOpacity onPress={Simpanan}>
+                <TouchableOpacity onPress={ListSimpanan}>
                   <View style={{flexDirection: 'column', alignItems: 'center'}}>
                       <FontAwesome name="balance-scale" size={35} color="black" />
                       <View style={{justifyContent: 'center', alignItems: 'center'}}>
